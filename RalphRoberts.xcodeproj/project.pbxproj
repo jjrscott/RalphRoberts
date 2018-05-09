@@ -11,6 +11,8 @@
 		05D396CD20A2FE7F006F6D4B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05D396CB20A2FE7F006F6D4B /* Main.storyboard */; };
 		05D396CF20A2FE81006F6D4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05D396CE20A2FE81006F6D4B /* Assets.xcassets */; };
 		05D396DD20A2FE82006F6D4B /* RalphRobertsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D396DC20A2FE82006F6D4B /* RalphRobertsTests.swift */; };
+		05D3971220A33C3A006F6D4B /* Data+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D3971120A33C3A006F6D4B /* Data+Hex.swift */; };
+		05D3971420A33C57006F6D4B /* Data+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D3971320A33C57006F6D4B /* Data+MD5.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +34,8 @@
 		05D396D820A2FE82006F6D4B /* RalphRobertsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RalphRobertsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		05D396DC20A2FE82006F6D4B /* RalphRobertsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RalphRobertsTests.swift; sourceTree = "<group>"; };
 		05D396DE20A2FE82006F6D4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		05D3971120A33C3A006F6D4B /* Data+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Hex.swift"; sourceTree = "<group>"; };
+		05D3971320A33C57006F6D4B /* Data+MD5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+MD5.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,7 @@
 				05D396C620A2FE7F006F6D4B /* RalphRoberts */,
 				05D396DB20A2FE82006F6D4B /* RalphRobertsTests */,
 				05D396C520A2FE7F006F6D4B /* Products */,
+				05D3970A20A33390006F6D4B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,6 +79,8 @@
 			isa = PBXGroup;
 			children = (
 				05D396C720A2FE7F006F6D4B /* AppDelegate.swift */,
+				05D3971120A33C3A006F6D4B /* Data+Hex.swift */,
+				05D3971320A33C57006F6D4B /* Data+MD5.swift */,
 				05D396CB20A2FE7F006F6D4B /* Main.storyboard */,
 				05D396CE20A2FE81006F6D4B /* Assets.xcassets */,
 				05D396D320A2FE81006F6D4B /* Info.plist */,
@@ -90,6 +97,13 @@
 			path = RalphRobertsTests;
 			sourceTree = "<group>";
 		};
+		05D3970A20A33390006F6D4B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -97,6 +111,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 05D396E120A2FE82006F6D4B /* Build configuration list for PBXNativeTarget "RalphRoberts" */;
 			buildPhases = (
+				05D3970920A33328006F6D4B /* Create CommonCrypto Framework */,
 				05D396C020A2FE7F006F6D4B /* Sources */,
 				05D396C120A2FE7F006F6D4B /* Frameworks */,
 				05D396C220A2FE7F006F6D4B /* Resources */,
@@ -185,12 +200,32 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		05D3970920A33328006F6D4B /* Create CommonCrypto Framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Create CommonCrypto Framework";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This if-statement means we'll only run the main script if the\n# CommonCrypto.framework directory doesn't exist because otherwise\n# the rest of the script causes a full recompile for anything\n# where CommonCrypto is a dependency\n# Do a \"Clean Build Folder\" to remove this directory and trigger\n# the rest of the script to run\n\nFRAMEWORK_DIR=\"${BUILT_PRODUCTS_DIR}/CommonCrypto.framework\"\n\nif [ -d \"${FRAMEWORK_DIR}\" ]; then\necho \"${FRAMEWORK_DIR} already exists, so skipping the rest of the script.\"\nexit 0\nfi\n\nmkdir -p \"${FRAMEWORK_DIR}/Modules\"\ncat <<EOF > \"${FRAMEWORK_DIR}/Modules/module.modulemap\"\nmodule CommonCrypto [system] {\n    header \"${SDKROOT}/usr/include/CommonCrypto/CommonCrypto.h\"\n    export *\n}\nEOF\n\nln -sf \"${SDKROOT}/usr/include/CommonCrypto\" \"${FRAMEWORK_DIR}/Headers\"";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		05D396C020A2FE7F006F6D4B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05D3971420A33C57006F6D4B /* Data+MD5.swift in Sources */,
 				05D396C820A2FE7F006F6D4B /* AppDelegate.swift in Sources */,
+				05D3971220A33C3A006F6D4B /* Data+Hex.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
