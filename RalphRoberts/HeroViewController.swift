@@ -14,18 +14,33 @@ class HeroViewController: UIViewController {
     
     @IBOutlet weak var descriptionTextView: UITextView?
     @IBOutlet weak var imageView: UIImageView?
-    
+    @IBOutlet weak var backgroundImageView: UIImageView?
+
     var imageDataTask: URLSessionDataTask?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = character?.name
-        self.descriptionTextView?.text = character?.description
+        
+        if let description = character?.description, description != ""
+        {
+            self.descriptionTextView?.text = description
+        }
+        else if let name = character?.name, name != ""
+        {
+            self.descriptionTextView?.text = "\(name) prefers to be mysterious."
+        }
+        else
+        {
+            self.descriptionTextView?.text = "This hero is so secretive that not even their name is known."
+        }
+
         
         if let image = character?.thumbnail
         {
             imageDataTask = MarvelConnector.getImage(image: image) { (image) in
                 self.imageView?.image = image
+                self.backgroundImageView?.image = image
             }
         }
     }

@@ -88,38 +88,60 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6uI-J1-jm4">
+                                <rect key="frame" x="0.0" y="64" width="375" height="184"/>
+                            </imageView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yw5-vT-Q8o">
+                                <rect key="frame" x="0.0" y="64" width="375" height="184"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="nbF-F0-9gw">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="184"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="QFu-PK-ptV">
-                                <rect key="frame" x="0.0" y="289" width="375" height="329"/>
+                                <rect key="frame" x="32" y="256" width="311" height="362"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5FN-9p-kgZ">
-                                <rect key="frame" x="16" y="119" width="240" height="128"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5FN-9p-kgZ">
+                                <rect key="frame" x="32" y="96" width="311" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="dUZ-5y-reA"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="QFu-PK-ptV" firstAttribute="top" secondItem="5hh-kT-BSK" secondAttribute="top" constant="225" id="1ty-W0-Gr7"/>
-                            <constraint firstItem="5hh-kT-BSK" firstAttribute="bottom" secondItem="QFu-PK-ptV" secondAttribute="bottom" id="Cnq-Bi-hdH"/>
-                            <constraint firstItem="QFu-PK-ptV" firstAttribute="top" secondItem="5FN-9p-kgZ" secondAttribute="bottom" constant="42" id="Pka-rg-T5B"/>
-                            <constraint firstItem="5hh-kT-BSK" firstAttribute="trailing" secondItem="5FN-9p-kgZ" secondAttribute="trailing" constant="119" id="hlm-J0-sST"/>
-                            <constraint firstItem="QFu-PK-ptV" firstAttribute="leading" secondItem="5hh-kT-BSK" secondAttribute="leading" id="hps-Jv-3OL"/>
-                            <constraint firstItem="5FN-9p-kgZ" firstAttribute="leading" secondItem="5hh-kT-BSK" secondAttribute="leading" constant="16" id="mza-Mf-Gc5"/>
-                            <constraint firstItem="5FN-9p-kgZ" firstAttribute="top" secondItem="5hh-kT-BSK" secondAttribute="top" constant="55" id="ngv-Dr-AMy"/>
-                            <constraint firstItem="5hh-kT-BSK" firstAttribute="trailing" secondItem="QFu-PK-ptV" secondAttribute="trailing" id="qZT-Dc-Wgh"/>
+                            <constraint firstItem="Yw5-vT-Q8o" firstAttribute="leading" secondItem="6uI-J1-jm4" secondAttribute="leading" id="069-4p-2lJ"/>
+                            <constraint firstItem="6uI-J1-jm4" firstAttribute="top" secondItem="5hh-kT-BSK" secondAttribute="top" id="0ty-hP-Qbc"/>
+                            <constraint firstItem="5hh-kT-BSK" firstAttribute="trailing" secondItem="5FN-9p-kgZ" secondAttribute="trailing" constant="32" id="1cD-tK-UZb"/>
+                            <constraint firstItem="5FN-9p-kgZ" firstAttribute="leading" secondItem="QFu-PK-ptV" secondAttribute="leading" id="5gv-Jq-8Yc"/>
+                            <constraint firstItem="Yw5-vT-Q8o" firstAttribute="top" secondItem="5hh-kT-BSK" secondAttribute="top" id="B0F-Bh-LNK"/>
+                            <constraint firstItem="Yw5-vT-Q8o" firstAttribute="trailing" secondItem="6uI-J1-jm4" secondAttribute="trailing" id="Ckh-Rn-3An"/>
+                            <constraint firstItem="QFu-PK-ptV" firstAttribute="top" secondItem="Yw5-vT-Q8o" secondAttribute="bottom" constant="8" symbolic="YES" id="H78-ah-Xwb"/>
+                            <constraint firstItem="QFu-PK-ptV" firstAttribute="bottom" secondItem="5hh-kT-BSK" secondAttribute="bottom" id="MJr-JK-Fsd"/>
+                            <constraint firstItem="6uI-J1-jm4" firstAttribute="leading" secondItem="oYX-Tx-qD2" secondAttribute="leading" id="WMP-UR-81p"/>
+                            <constraint firstItem="QFu-PK-ptV" firstAttribute="top" secondItem="5FN-9p-kgZ" secondAttribute="bottom" constant="32" id="ZmY-po-jVL"/>
+                            <constraint firstItem="5FN-9p-kgZ" firstAttribute="trailing" secondItem="QFu-PK-ptV" secondAttribute="trailing" id="bpL-dy-oVK"/>
+                            <constraint firstItem="5FN-9p-kgZ" firstAttribute="leading" secondItem="5hh-kT-BSK" secondAttribute="leading" constant="32" id="dGG-JA-NbV"/>
+                            <constraint firstAttribute="trailing" secondItem="6uI-J1-jm4" secondAttribute="trailing" id="h6J-9S-VGI"/>
+                            <constraint firstItem="5FN-9p-kgZ" firstAttribute="top" secondItem="5hh-kT-BSK" secondAttribute="top" constant="32" id="t55-kH-ehR"/>
+                            <constraint firstItem="QFu-PK-ptV" firstAttribute="top" secondItem="6uI-J1-jm4" secondAttribute="bottom" constant="8" symbolic="YES" id="vTC-He-AMp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5hh-kT-BSK"/>
                     </view>
                     <connections>
+                        <outlet property="backgroundImageView" destination="6uI-J1-jm4" id="yjQ-b7-Cse"/>
                         <outlet property="descriptionTextView" destination="QFu-PK-ptV" id="gvC-QR-CSz"/>
                         <outlet property="imageView" destination="5FN-9p-kgZ" id="0cs-rH-ZW4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yqo-MU-NTs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2044" y="233"/>
+            <point key="canvasLocation" x="2044" y="232.53373313343329"/>
         </scene>
         <!--Characters-->
         <scene sceneID="IxN-z2-NC7">
