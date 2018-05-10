@@ -40,7 +40,7 @@ class MarvelConnector
         var id: Int? = nil // The unique ID of the character resource.,
         var name: String? = nil // The name of the character.,
         var description: String? = nil // A short bio or description of the character.,
-        // var modified: Date? = nil // The date the resource was most recently modified.,
+        var modified: Date? = nil // The date the resource was most recently modified.,
         var resourceURI: String? = nil // The canonical URL identifier for this resource.,
         var urls: [Url]? = nil // A set of public web site URLs for the resource.,
         var thumbnail: Image? = nil // The representative image for this character.,
@@ -146,10 +146,11 @@ class MarvelConnector
             }
             
             let decoder = JSONDecoder()
-            let characterDataWrapper = try! decoder.decode(CharacterDataWrapper.self, from: data)
+            decoder.dateDecodingStrategy = .iso8601
+            let characterDataWrapper = try? decoder.decode(CharacterDataWrapper.self, from: data)
             
             DispatchQueue.main.async {
-                completion(characterDataWrapper.data?.results, nil)
+                completion(characterDataWrapper?.data?.results, error)
             }
         }.resume()
     }

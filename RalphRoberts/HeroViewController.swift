@@ -9,9 +9,12 @@
 import UIKit
 
 class HeroViewController: UIViewController {
+    
+    public var character : MarvelConnector.Character?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = character?.name
 
         // Do any additional setup after loading the view.
     }
