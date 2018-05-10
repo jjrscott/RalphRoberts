@@ -87,9 +87,35 @@
                     <view key="view" contentMode="scaleToFill" id="oYX-Tx-qD2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="QFu-PK-ptV">
+                                <rect key="frame" x="0.0" y="289" width="375" height="329"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5FN-9p-kgZ">
+                                <rect key="frame" x="16" y="119" width="240" height="128"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="QFu-PK-ptV" firstAttribute="top" secondItem="5hh-kT-BSK" secondAttribute="top" constant="225" id="1ty-W0-Gr7"/>
+                            <constraint firstItem="5hh-kT-BSK" firstAttribute="bottom" secondItem="QFu-PK-ptV" secondAttribute="bottom" id="Cnq-Bi-hdH"/>
+                            <constraint firstItem="QFu-PK-ptV" firstAttribute="top" secondItem="5FN-9p-kgZ" secondAttribute="bottom" constant="42" id="Pka-rg-T5B"/>
+                            <constraint firstItem="5hh-kT-BSK" firstAttribute="trailing" secondItem="5FN-9p-kgZ" secondAttribute="trailing" constant="119" id="hlm-J0-sST"/>
+                            <constraint firstItem="QFu-PK-ptV" firstAttribute="leading" secondItem="5hh-kT-BSK" secondAttribute="leading" id="hps-Jv-3OL"/>
+                            <constraint firstItem="5FN-9p-kgZ" firstAttribute="leading" secondItem="5hh-kT-BSK" secondAttribute="leading" constant="16" id="mza-Mf-Gc5"/>
+                            <constraint firstItem="5FN-9p-kgZ" firstAttribute="top" secondItem="5hh-kT-BSK" secondAttribute="top" constant="55" id="ngv-Dr-AMy"/>
+                            <constraint firstItem="5hh-kT-BSK" firstAttribute="trailing" secondItem="QFu-PK-ptV" secondAttribute="trailing" id="qZT-Dc-Wgh"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="5hh-kT-BSK"/>
                     </view>
+                    <connections>
+                        <outlet property="descriptionTextView" destination="QFu-PK-ptV" id="gvC-QR-CSz"/>
+                        <outlet property="imageView" destination="5FN-9p-kgZ" id="0cs-rH-ZW4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yqo-MU-NTs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

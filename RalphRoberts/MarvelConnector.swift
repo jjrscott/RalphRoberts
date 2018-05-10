@@ -6,7 +6,7 @@
 //  Copyright © 2018 John Scott. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum MarvelError: Error
 {
@@ -110,7 +110,7 @@ class MarvelConnector
     }
     
     
-    func getCharacters(completion: @escaping ([Character]?, Error?) -> Void) throws
+    class func getCharacters(completion: @escaping ([Character]?, Error?) -> Void) throws
     {
         guard var urlComponents = URLComponents(string: "https://gateway.marvel.com/v1/public/characters") else {
             throw MarvelError.Smeg
@@ -155,4 +155,34 @@ class MarvelConnector
         }.resume()
     }
     
+    class func getImage(image: Image, completion: @escaping (UIImage?) -> Void) -> URLSessionDataTask?
+    {
+        if let imagePath = image.path,
+            let imageExtension = image.extension,
+            let imageUrl = URL(string: imagePath+"."+imageExtension)
+        {
+            let task = URLSession.shared.dataTask(with: imageUrl) { (data, response, error) in
+                if let imageData = data
+                {
+                    let image = UIImage(data: imageData)
+                    DispatchQueue.main.async {
+                        completion(image)
+                    }
+                }
+                else
+                {
+                    DispatchQueue.main.async {
+                        completion(nil)
+                    }
+                }
+            }
+            task.resume()
+            return task
+        }
+        DispatchQueue.main.async {
+            completion(nil)
+        }
+        return nil
+    }
+
 }
