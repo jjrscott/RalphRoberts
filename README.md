@@ -6,6 +6,7 @@
 ## Notes
 
 - Main.storyboard is used for both the launch screen and the main screens. This gives the developer control over when the launch screen is dismissed.
+- `MarvelConnector`'s data `struct`s were pulled manually from Marvel's website but could be pulled automatically. The pulled data MUST still be versioned.
 
 
 ## Acknowledgments

@@ -3,7 +3,7 @@
 //  RalphRoberts
 //
 //  Created by John Scott on 09/05/2018.
-//  From SO answer https://stackoverflow.com/a/40089462/542244 (with modifications for Swift 4.1 ...)
+//  From SO answer https://stackoverflow.com/a/50257157/542244 (with modifications for Swift 4.1 ...)
 //
 
 import Foundation

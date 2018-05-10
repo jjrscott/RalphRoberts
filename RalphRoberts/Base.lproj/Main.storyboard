@@ -41,7 +41,7 @@
         <!--Charcters-->
         <scene sceneID="uyr-E1-Gv7">
             <objects>
-                <tableViewController id="1im-eP-Q5I" sceneMemberID="viewController">
+                <tableViewController id="1im-eP-Q5I" customClass="CharactersViewController" customModule="RalphRoberts" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="vEy-VB-5Tr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -74,10 +74,10 @@
             </objects>
             <point key="canvasLocation" x="953" y="233"/>
         </scene>
-        <!--Superhero-->
+        <!--Hero-->
         <scene sceneID="NEP-gy-CgC">
             <objects>
-                <viewController title="Superhero" id="nbv-4W-Kza" sceneMemberID="viewController">
+                <viewController title="Hero" id="nbv-4W-Kza" customClass="HeroViewController" customModule="RalphRoberts" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oYX-Tx-qD2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

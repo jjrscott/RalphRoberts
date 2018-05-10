@@ -12,8 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -42,16 +41,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
-        if let tabBarController = window?.rootViewController as? UITabBarController
-        {
-            tabBarController.tabBar.isHidden = false
-        }
+        try! MarvelConnector().getCharacters(completion: { (characters, error) in
+            
+            if let tabBarController = self.window?.rootViewController as? UITabBarController, let viewControllers = tabBarController.viewControllers
+            {
+                for (index, viewController) in viewControllers.enumerated()
+                {
+                    if let charactersViewController = viewController as? CharactersViewController
+                    {
+                        charactersViewController.characters = characters
+                        tabBarController.selectedIndex = index
+                    }
+                    else if let navigationViewController = viewController as? UINavigationController, let charactersViewController = navigationViewController.viewControllers.first as? CharactersViewController
+                    {
+                        charactersViewController.characters = characters
+                        tabBarController.selectedIndex = index
+                    }
+                }
+            }
+        })
     }
-
+    
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
 }
 
