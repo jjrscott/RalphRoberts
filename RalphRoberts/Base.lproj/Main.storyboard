@@ -38,7 +38,7 @@
             </objects>
             <point key="canvasLocation" x="0.80000000000000004" y="-597.75112443778119"/>
         </scene>
-        <!--Charcters-->
+        <!--Characters-->
         <scene sceneID="uyr-E1-Gv7">
             <objects>
                 <tableViewController id="1im-eP-Q5I" customClass="CharactersViewController" customModule="RalphRoberts" customModuleProvider="target" sceneMemberID="viewController">
@@ -74,7 +74,7 @@
                             <outlet property="delegate" destination="1im-eP-Q5I" id="6IS-lx-0RF"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Charcters" id="C2g-xn-hus"/>
+                    <navigationItem key="navigationItem" title="Characters" id="C2g-xn-hus"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l6Y-7M-OHa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
