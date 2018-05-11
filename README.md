@@ -4,14 +4,14 @@
 
 RalphRoberts is a small demo app for iOS that displays characters using [Marvel Developer Portal](https://developer.marvel.com) APIs.
 
-## Approach
-
-The general approach taken to this project was to follow [The Rule of Three](https://blog.codinghorror.com/rule-of-three/) as summarised by [Jeff Atwood](https://en.wikipedia.org/wiki/Jeff_Atwood) (although he's describing a relatively old concept). Combined with [Kanban](https://en.wikipedia.org/wiki/Kanban) I have found this to be an extremely effective mechanism for practically improving products while maintaining timely releases.
-
 ## Requirements
 
 - Public and private key to the [Marvel Developer Portal]().
 - Xcode 9.3
+
+## Approach
+
+The general approach taken to this project was to follow [The Rule of Three](https://blog.codinghorror.com/rule-of-three/) as summarised by [Jeff Atwood](https://en.wikipedia.org/wiki/Jeff_Atwood) (although he's describing a relatively old concept). Combined with [Kanban](https://en.wikipedia.org/wiki/Kanban) I have found this to be an extremely effective mechanism for practically improving products while maintaining timely releases.
 
 ## Notes
 
