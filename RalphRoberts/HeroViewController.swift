@@ -10,7 +10,11 @@ import UIKit
 
 class HeroViewController: UIViewController {
     
-    public var character : MarvelConnector.Character?
+    public var character : MarvelConnector.Character? {
+        didSet {
+            reloadData()
+        }
+    }
     
     @IBOutlet weak var descriptionTextView: UITextView?
     @IBOutlet weak var imageView: UIImageView?
@@ -20,6 +24,11 @@ class HeroViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        reloadData()
+    }
+    
+    func reloadData()
+    {
         self.title = character?.name
         
         if let description = character?.description, description != ""
@@ -34,7 +43,7 @@ class HeroViewController: UIViewController {
         {
             self.descriptionTextView?.text = "This hero is so secretive that not even their name is known."
         }
-
+        
         
         if let image = character?.thumbnail
         {
@@ -43,6 +52,7 @@ class HeroViewController: UIViewController {
                 self.backgroundImageView?.image = image
             }
         }
+
     }
     
     override func didReceiveMemoryWarning() {

@@ -10,7 +10,10 @@ import UIKit
 
 enum MarvelError: Error
 {
-    case Smeg
+    case invalidUrl
+    case emptyServerResponse
+    case badServerResponse
+    case serverMessage(MarvelConnector.ServerMessage)
 }
 
 class MarvelConnector
@@ -109,11 +112,22 @@ class MarvelConnector
         var name: String? = nil // The canonical name of the series.
     }
     
+    public struct ServerMessage: Decodable {
+        var code: String? = nil
+        var message: String? = nil // Human readable message associated with the code
+    }
     
-    class func getCharacters(completion: @escaping ([Character]?, Error?) -> Void) throws
+    
+    /// Retrieves characters from Marvel's server
+    /// - Parameters:
+    ///   - range: range of characters to request
+    ///   - completion: Called as a result of server action
+    
+    class func getCharacters(range : Range<Int>, completion: @escaping (_ characters : [Character]?, _ error : Error?) -> Void)
     {
         guard var urlComponents = URLComponents(string: "https://gateway.marvel.com/v1/public/characters") else {
-            throw MarvelError.Smeg
+            completion(nil, MarvelError.invalidUrl)
+            return
         }
         
         let timestamp = UUID().uuidString
@@ -128,32 +142,65 @@ class MarvelConnector
         queryItems.append(URLQueryItem(name: "ts", value: timestamp))
         queryItems.append(URLQueryItem(name: "apikey", value: publicKey))
         queryItems.append(URLQueryItem(name: "hash", value: hash))
-        queryItems.append(URLQueryItem(name: "limit", value: "50"))
+        queryItems.append(URLQueryItem(name: "offset", value: String(range.lowerBound)))
+        queryItems.append(URLQueryItem(name: "limit", value: String(range.upperBound - range.lowerBound)))
 
         urlComponents.queryItems = queryItems
         
         guard let requestUrl = urlComponents.url else {
-            throw MarvelError.Smeg
+            completion(nil, MarvelError.invalidUrl)
+            return
         }
         
         let request = URLRequest(url: requestUrl)
 
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             
+            guard error == nil else
+            {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+                return
+            }
+            
             guard let data=data else
             {
+                DispatchQueue.main.async {
+                    completion(nil, MarvelError.emptyServerResponse)
+                }
                 return
             }
             
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
-            let characterDataWrapper = try? decoder.decode(CharacterDataWrapper.self, from: data)
-            
-            DispatchQueue.main.async {
-                completion(characterDataWrapper?.data?.results, error)
+            if let characterDataWrapper = try? decoder.decode(CharacterDataWrapper.self, from: data)
+            {
+                DispatchQueue.main.async {
+                    completion(characterDataWrapper.data?.results, nil)
+                }
             }
+            else if let serverMessage = try? decoder.decode(ServerMessage.self, from: data)
+            {
+                DispatchQueue.main.async {
+                    completion(nil, MarvelError.serverMessage(serverMessage))
+                }
+            }
+            else
+            {
+                DispatchQueue.main.async {
+                    completion(nil, MarvelError.badServerResponse)
+                }
+            }
+            
+
         }.resume()
     }
+    
+    /// Retrieves an image from Marvel's server
+    /// - Parameters:
+    ///   - image: the image description previously returned from the server
+    ///   - completion: Called when the real image is available or the retrieval has been unsuccessful
     
     class func getImage(image: Image, completion: @escaping (UIImage?) -> Void) -> URLSessionDataTask?
     {

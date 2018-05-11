@@ -41,7 +41,50 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
-        try! MarvelConnector.getCharacters(completion: { (characters, error) in
+        reloadCharacterData()
+    }
+    
+    func reloadCharacterData()
+    {
+        MarvelConnector.getCharacters(range: 0..<50) { (characters, error) in
+            
+            guard error == nil else
+            {
+                var message : String?
+                
+                if let marvelError = error as? MarvelError
+                {
+                    switch (marvelError)
+                    {
+                    case .invalidUrl:
+                        message = "The URL accessed is invalid. This is a bug"
+                    case .emptyServerResponse:
+                        message = "The server responded with nothing, zip, nadda. Not much can be done here."
+                    case .badServerResponse:
+                        message = "The server responded with something not understood. This is a bug"
+                    case let .serverMessage(serverMessage):
+                        message = serverMessage.message
+                    }
+                }
+                else if let urlError = error as? URLError,
+                    let localizedDescription = urlError.userInfo[NSLocalizedDescriptionKey] as? String
+                {
+                    message = localizedDescription
+                }
+                else
+                {
+                    message = "A mysterious thing happened. This is probably a bug"
+                }
+                
+                let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+                    self.reloadCharacterData()
+                }))
+                
+                self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+                
+                return
+            }
             
             if let tabBarController = self.window?.rootViewController as? UITabBarController, let viewControllers = tabBarController.viewControllers
             {
@@ -59,7 +102,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     }
                 }
             }
-        })
+        }
+
     }
     
     func applicationWillTerminate(_ application: UIApplication) {

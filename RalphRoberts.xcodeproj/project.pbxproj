@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		0526F36F20A449DF004AEA81 /* CharactersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0526F36E20A449DF004AEA81 /* CharactersViewController.swift */; };
 		0526F37120A449F8004AEA81 /* HeroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0526F37020A449F8004AEA81 /* HeroViewController.swift */; };
-		0526F37320A450F7004AEA81 /* Scripts in Resources */ = {isa = PBXBuildFile; fileRef = 0526F37220A450F6004AEA81 /* Scripts */; };
 		0526F37520A45105004AEA81 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 0526F37420A45105004AEA81 /* README.md */; };
+		0526F37820A4CC89004AEA81 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0526F37720A4CC89004AEA81 /* LaunchViewController.swift */; };
 		05D396C820A2FE7F006F6D4B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D396C720A2FE7F006F6D4B /* AppDelegate.swift */; };
 		05D396CD20A2FE7F006F6D4B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05D396CB20A2FE7F006F6D4B /* Main.storyboard */; };
 		05D396CF20A2FE81006F6D4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05D396CE20A2FE81006F6D4B /* Assets.xcassets */; };
@@ -36,6 +36,7 @@
 		0526F37220A450F6004AEA81 /* Scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Scripts; sourceTree = "<group>"; };
 		0526F37420A45105004AEA81 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		0526F37620A45138004AEA81 /* CommonCrypto.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CommonCrypto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0526F37720A4CC89004AEA81 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		05D396C420A2FE7F006F6D4B /* RalphRoberts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RalphRoberts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05D396C720A2FE7F006F6D4B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		05D396CC20A2FE7F006F6D4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -97,6 +98,7 @@
 				05D3971520A37E31006F6D4B /* MarvelConnector.swift */,
 				0526F36E20A449DF004AEA81 /* CharactersViewController.swift */,
 				0526F37020A449F8004AEA81 /* HeroViewController.swift */,
+				0526F37720A4CC89004AEA81 /* LaunchViewController.swift */,
 				05D396CB20A2FE7F006F6D4B /* Main.storyboard */,
 				05D396CE20A2FE81006F6D4B /* Assets.xcassets */,
 				05D396D320A2FE81006F6D4B /* Info.plist */,
@@ -203,7 +205,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0526F37320A450F7004AEA81 /* Scripts in Resources */,
 				05D396CF20A2FE81006F6D4B /* Assets.xcassets in Resources */,
 				0526F37520A45105004AEA81 /* README.md in Resources */,
 				05D396CD20A2FE7F006F6D4B /* Main.storyboard in Resources */,
@@ -247,6 +248,7 @@
 				05D3971620A37E31006F6D4B /* MarvelConnector.swift in Sources */,
 				0526F36F20A449DF004AEA81 /* CharactersViewController.swift in Sources */,
 				0526F37120A449F8004AEA81 /* HeroViewController.swift in Sources */,
+				0526F37820A4CC89004AEA81 /* LaunchViewController.swift in Sources */,
 				05D3971220A33C3A006F6D4B /* Data+Hex.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
