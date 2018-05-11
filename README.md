@@ -1,4 +1,4 @@
-<img src='RalphRoberts/Assets.xcassets/Shield.imageset/Shield.pdf' width='100'>
+<img src='logo.png' width='100'>
 
 # RalphRoberts
 
